@@ -1,23 +1,22 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
-    Layout = "layout.cshtml";
+	Layout = "_Layout.cshtml";
 }
 
 <html>
 <head>
-@*     <title>@Model.Name</title> *@
     <meta name="mobile-web-app-capable" content="yes">
     @*  <link rel="stylesheet" href='@Url.Content("~/css/styles.css")' /> *@
     <link rel="stylesheet" href="~/css/styles.css" />
 </head>
 <body>
-    <h1>Hii</h1>
-   @*  <h1>@Model.Value("Name")</h1>
+    
+     <h1>@Model.Value("productName")</h1>
     <p>Price: @Model.Value("price")</p>
-    <div>@Model.Value("description")</div> *@
+    <div>@Model.Value("description")</div> 
     @*      <img src="@Model.Value("image")" alt="Product Image" /> *@
-@*  @{
+      @{
         var mediaItem = Umbraco.Media(Guid.Parse("748c9b3b-2d40-4a17-a4d9-9e766eba1174"));
 
         if (mediaItem != null)
@@ -34,6 +33,6 @@
 
         }
 
-    }  *@
+    }  
 </body>
 </html>
