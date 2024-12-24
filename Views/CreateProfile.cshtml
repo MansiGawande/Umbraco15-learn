@@ -1,4 +1,4 @@
-﻿@using Umbraco15_learn.Controller;
+﻿ @* @using Umbraco15_learn.Controllers; *@
 @using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
@@ -17,8 +17,8 @@
 @*      /umbraco/api/ is a base route that Umbraco uses for its custom API controllers. *@
     <div class="container mt-5">
             <h2 class="text-center">User Information Form</h2>
-        <form action="/umbraco/api/profile/createprofile" method="post" enctype="multipart/form-data">
-
+        <form method="post" action="@Url.Action("CreateProfile", "Profile")">
+@*              <form action="/umbraco/api/profile/createprofile" method="post" enctype="multipart/form-data"> *@
                 <!-- Name Field -->
                 <div class="mb-3">
                     <label for="userName" class="form-label">Name</label>

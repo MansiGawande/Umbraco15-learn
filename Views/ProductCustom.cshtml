@@ -1,0 +1,10 @@
+﻿
+ @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco15_learn.Model.Product>
+<div class="container">
+    <ul>
+        @foreach (var store in Model.AvailableStores)
+        {
+            <li>@store</li>
+        }
+    </ul>
+</div>
