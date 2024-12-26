@@ -1,25 +1,34 @@
 using Microsoft.EntityFrameworkCore;
+using Serilog.Context;
 using Umbraco15_learn;
-using Umbraco15_learn.Data;
-using Umbraco15_learn.Model;
+//using Umbraco15_learn.Data;
+//using Umbraco15_learn.Model;
 //using Umbraco15_learn.Data;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-builder.Services.AddUmbracoDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
-builder.CreateUmbracoBuilder()
+    builder.CreateUmbracoBuilder()
     .AddBackOffice()
     .AddWebsite()
     .AddDeliveryApi() // for add custom Db table
     .AddComposers()
     .Build();
 
-builder.Services.AddUmbracoDbContext<ApplicationDbContext>((serviceProvider, options) =>
-{
-    options.UseUmbracoDatabaseProvider(serviceProvider);
-});
+//builder.Services.AddUmbracoDbContext<BlogContext>(options =>
+//{
+//    options.UseSqlServer("{YOUR CONNECTIONSTRING HERE}");
+//    //If you are using SQlite, replace UseSqlServer with UseSqlite
+//});
+
+//builder.Services.AddUmbracoDbContext<ApplicationDbContext>(options =>
+//    options.UseSqlServer("Server=SKY-SK\\SQL2022;Database=Umbraco learn;Integrated Security=true;TrustServerCertificate=true;"));
+
+
+//builder.Services.AddUmbracoDbContext<ApplicationDbContext>((serviceProvider, options) =>
+//{
+//    options.UseUmbracoDatabaseProvider(serviceProvider);
+//});
 
 WebApplication app = builder.Build();
 
