@@ -1,20 +1,17 @@
 ﻿
 @using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
-
 @{
     Layout = "_Layout.cshtml"; 
-    
 }
 <html>
 <head>
     <meta name="mobile-web-app-capable" content="yes">
      <link href="~/css/customForm.css" rel="stylesheet" />
-
 </head>
 <body>
 @{
-    var formId = Model.Value<Guid>("formPicker"); // Ensure 'formPicker' is the correct alias in your content type
+    var formId = Model.Value<Guid>("formPicker"); 
     // <p>Form ID value: @formId</p>  
 
     if (formId == Guid.Empty) {

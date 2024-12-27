@@ -1,65 +1,115 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using Umbraco.Forms.Core.Services;
+@using Umbraco.Forms.Core.Extensions
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@inject IRecordReaderService _recordReaderService;
 @{
 	Layout = "_Layout.cshtml";
 }
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - www.codingnepalweb.com -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Card Slider HTML and CSS | CodingNepal</title>
+  <title>Card Slider HTML and CSS </title>
   <!-- Linking SwiperJS CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-     <link href="~/css/viewProfile.css" rel="stylesheet" />
+  <link href="~/css/viewProfile.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
 </head>
 <body>
+  <section class= "incenter">
   <div class="container swiper">
     <div class="slider-wrapper">
       <div class="card-list swiper-wrapper">
+        @foreach (var record in _recordReaderService.GetApprovedRecordsFromForm(Guid.Parse("ad559f9b-e5d1-47a9-89a9-6f0f97d36fcf"), 1, 5).Items) {
+
         <div class="card-item swiper-slide">
           <img src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg" alt="User Image" class="user-image">
-          <h2 class="user-name">James Wilson</h2>
-          <p class="user-profession">Software Developer</p>
-          <button class="message-button">Message</button>
+          
+          <h2 class="user-name">@record.ValueAsString("name")</h2>
+          <p class="user-profession">@record.ValueAsString("email")</p>
+          <p class="user-profession">@record.ValueAsString("contactNumber")</p>
+          <p class="user-profession">@record.Id</p>
+               @if (DateTime.TryParse(record.ValueAsString("dateOfBirth"), out DateTime dateOfBirth))
+              {
+                <p class="user-profession">@dateOfBirth.ToString("dd-MM-yyyy")</p>
+              }
+              else
+              {
+                <p class="user-profession"> </p> 
+              }
+              <!-- <p class = "user-profession">@record.Created.ToString("dd MMMM yyy")</p> -->
+              <p class="user-profession">@record.ValueAsString("city")</p>
+              
+            @{
+              var targetPage = Umbraco.Content(new Guid("e5d50d5f-931a-4faa-ac8e-926d0c08d0b2"));
+              var targetUrl = targetPage?.Url();
+            }
+            <!-- <button class="message-button" onclick="window.location.href='@targetUrl'">Message</button> -->
+        <button class="message-button" onclick="window.location.href='@targetUrl?id=@record.Id'">View Profile</button>
+
         </div>
-        <div class="card-item swiper-slide">
+        }
+        
+
+
+         <div class="card-item swiper-slide">
           <img src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg" alt="User Image" class="user-image">
           <h2 class="user-name">Sarah Johnson</h2>
-          <p class="user-profession">Graphic Designer</p>
-          <button class="message-button">Message</button>
+          <p class="user-profession">sarah123@gmail.com</p>
+          <p class="user-profession">9658965896</p>
+          <p class="user-profession">25-02-2001</p>
+          <p class="user-profession">Bhopal</p>
+          
+            <button class="message-button">Message</button>
         </div>
         <div class="card-item swiper-slide">
           <img src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg" alt="User Image" class="user-image">
           <h2 class="user-name">Michael Brown</h2>
-          <p class="user-profession">Project Manager</p>
-          <button class="message-button">Message</button>
+          <p class="user-profession">michael123@gmail.com</p>
+          <p class="user-profession">6238965896</p>
+          <p class="user-profession">25-02-2002</p>
+          <p class="user-profession">Ahamdabad</p>
+            <button class="message-button">Message</button>
         </div>
         <div class="card-item swiper-slide">
           <img src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg" alt="User Image" class="user-image">
           <h2 class="user-name">Emily Davis</h2>
-          <p class="user-profession">Marketing Specialist</p>
-          <button class="message-button">Message</button>
+           <p class="user-profession">emily123@gmail.com</p>
+          <p class="user-profession">6658965896</p>
+          <p class="user-profession">26-02-2004</p>
+          <p class="user-profession">Pune</p>
+            <button class="message-button">Message</button>
         </div>
         <div class="card-item swiper-slide">
           <img src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg" alt="User Image" class="user-image">
           <h2 class="user-name">Christopher Garcia</h2>
-          <p class="user-profession">Data Scientist</p>
-          <button class="message-button">Message</button>
+          <p class="user-profession">christopher123@gmail.com</p>
+          <p class="user-profession">7778965896</p>
+          <p class="user-profession">21-01-2001</p>
+          <p class="user-profession">Vardha</p>
+            <button class="message-button">Message</button>
         </div>
         <div class="card-item swiper-slide">
           <img src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg" alt="User Image" class="user-image">
           <h2 class="user-name">Richard Wilson</h2>
-          <p class="user-profession">Product Designer</p>
-          <button class="message-button">Message</button>
+          <p class="user-profession">richard123@gmail.com</p>
+          <p class="user-profession">2318965896</p>
+          <p class="user-profession">25-02-2000</p>
+          <p class="user-profession">Kolkata</p>
+            <button class="message-button">Message</button>
+        
         </div>
-      </div>
+       </div>
       <div class="swiper-pagination"></div>
       <div class="swiper-slide-button swiper-button-prev"></div>
       <div class="swiper-slide-button swiper-button-next"></div>
     </div>
+        
   </div>
+  <section>
   <!-- Linking SwiperJS script -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <!-- Linking custom script -->

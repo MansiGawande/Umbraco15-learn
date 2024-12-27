@@ -1,8 +1,11 @@
-body {
+
+.incenter{
   background: url("images/bg.jpg") #030728 no-repeat center;
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
-
-
 
 .slider-wrapper {
   overflow: hidden;
@@ -35,7 +38,8 @@ body {
   font-size: 1.15rem;
   color: #e3e3e3;
   font-weight: 500;
-  margin: 14px 0 40px;
+  margin: 7px 0 20px;
+
 }
 .card-list .card-item .message-button {
   font-size: 1.25rem;

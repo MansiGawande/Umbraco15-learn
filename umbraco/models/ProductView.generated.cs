@@ -18,7 +18,7 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	/// <summary>Shop</summary>
+	/// <summary>Product View</summary>
 	[PublishedModel("productView")]
 	public partial class ProductView : PublishedContentModel
 	{
