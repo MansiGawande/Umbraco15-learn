@@ -1,0 +1,44 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    Layout = "_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+</head>
+<body>
+  
+    <!-- built-in rendering mechanism for rendering Blocks using a Partial View for each block.
+
+The default rendering method is named GetBlockGridHtmlAsync() -->
+  <div class="grid-container">
+        @await Html.GetBlockGridHtmlAsync(Model, "myGrid")
+    </div>
+
+    @{
+
+        var parentBlockGrid = Model.Value<ParentBlockGrid>("myGrid");
+
+        if (parentBlockGrid != null)
+        {
+            foreach (var block in parentBlockGrid.MyGrid)
+            {
+                var content = block.Content;
+                @await Html.PartialAsync("PathToMyFolderOfPartialViews/" + content.ContentType.Alias, block)
+                ;
+            }
+        }
+
+        else
+        {
+            <p>No grid content found.</p>
+        }
+    }
+
+  </body>
+</html>

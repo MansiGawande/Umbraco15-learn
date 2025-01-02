@@ -32,6 +32,7 @@
           <p class="user-profession">@record.ValueAsString("email")</p>
           <p class="user-profession">@record.ValueAsString("contactNumber")</p>
           <p class="user-profession">@record.Id</p>
+
                @if (DateTime.TryParse(record.ValueAsString("dateOfBirth"), out DateTime dateOfBirth))
               {
                 <p class="user-profession">@dateOfBirth.ToString("dd-MM-yyyy")</p>
