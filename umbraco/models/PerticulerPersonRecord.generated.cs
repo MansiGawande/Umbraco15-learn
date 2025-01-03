@@ -18,7 +18,7 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	/// <summary>Perticuler Person Record</summary>
+	/// <summary>Perticular Person Record</summary>
 	[PublishedModel("perticulerPersonRecord")]
 	public partial class PerticulerPersonRecord : PublishedContentModel
 	{
