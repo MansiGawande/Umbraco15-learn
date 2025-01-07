@@ -1,0 +1,153 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ProductOverview>
+@{
+    Layout = "_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- smart Solution Links -->
+    <link data-n-head="true" rel="icon" type="image/x-icon" href="~/images/favicon-32x32.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100;9..40,200;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900;9..40,1000&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+     <link rel = "stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" /> 
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="~/css/smartPro.css" />
+    <!-- smart Solution end links -->
+</head>
+<body>
+    @{
+    <!-- smart way -->
+    <div class="overview-content">
+
+        <!-- explore-product -->
+        <section class="customer-stories-section">
+            <div class="container">
+                <div class="row">
+                    <div class="explore-product">
+                        <div class="col-12 text-start">
+                             <div class="sub-title">@Model.ProductsTitle</div>
+                            <div class="title">@Model.ProductsSubTitle</div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <!-- BlogPost section start============= -->
+                        <div id="BlogPost" class="tab-pane">
+                            <div class=" explore-product-tabs">
+                                <div class="nav-tabs custom-navigation">
+                                    @if ((@Model).ProductNamesContent != null)
+                                    {
+
+                                        @foreach (var item in (@Model).ProductNamesContent)
+                                        {
+                                            <div><span>@item.Name</span></div>
+
+                                        }
+                                    }
+                                </div>
+                                <!-- Add more buttons as needed -->
+                            </div>
+                            <div class="productSlider">
+                                @if (Model.ProductDetailsContent != null)
+                                {
+                                    @foreach (var item in Model.ProductDetailsContent)
+                                    {
+                                        <div>
+                                            <div class="slider-box">
+                                                <div class="row align-items-center">
+                                                    <div class="col-sm-6">
+                                                        <div class="box-slider-content">
+
+                                                            <h5>@item.Value("productTitle")</h5>
+                                                            <p>@item.Value(("productSubTitle"))</p>
+                                                            <!-- ========== cORE dIGITAL BANKING -->
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-sm-6 side-img">
+                                                        @if (item.HasValue("productLogo"))
+                                                        {
+
+                                                            var productLogo = item.Value<IPublishedContent>("productLogo");
+                                                            @if (productLogo != null)
+                                                            {
+                                                                var mediaItem = Umbraco.Media(productLogo.Id);
+                                                                if (mediaItem != null)
+                                                                {
+                                                                    <!-- ==== pRODUCT Logo -->
+
+                                                                    <img src="@mediaItem.Url()" alt="@mediaItem.Name">
+                                                                }
+                                                            }
+                                                        }
+                                                    </div>
+
+                                                    <div class="col-sm-10">
+                                                        <!-- ==== pRODUCT sHORT DESCRIPTION -->
+                                                        @item.Value("productShortDescription")
+                                                    </div>
+
+                                                    <div class="col-sm-6">
+                                                        <div class="box-slider-content-bottom">
+                                                            <!-- ========pRODUCT lONG dESCRIPTION -->
+                                                            @item.Value("productLongDescription")
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-6">
+                                                        @if (item.HasValue("productImage"))
+                                                        {
+                                                            var productImages = item.Value<IPublishedContent>("productImage");
+                                                            if (productImages != null)
+                                                            {
+
+                                                                var mediaItem = Umbraco.Media(productImages.Id);
+                                                                if (mediaItem != null)
+                                                                {
+                                                                    <img src="@mediaItem.Url()" alt="@mediaItem.Name">
+                                                                }
+                                                            }
+                                                        }
+                                                    </div>
+
+                                                    <div class="col-6 learn-more">
+                                                        <a href=""><i class="bi bi-arrow-right"></i>Learn More</a>
+
+                                                        <!-- =========/product/products-los/       /product/products-unifi/ -2  -->
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <!-- BlogPost section end -->
+
+                    </div>
+                </div>
+
+                <div class="customer-stories-block">
+                </div>
+            </div>
+        </section>
+
+    </div>
+    }
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.js"></script>
+
+<script src="~/scripts/smartPro.js"></script>
+</html>
