@@ -1,0 +1,35 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Los>
+
+@{
+	Layout = "_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- smart Solution Links -->
+    <link data-n-head="true" rel="icon" type="image/x-icon" href="~/images/favicon-32x32.png">
+    <link rel="stylesheet" href="~/css/smartPro.css" />
+
+    <!-- smart Solution end links -->
+</head>
+<body>
+<section class="discover loan-discover-section">
+	<div class="container">
+		<div class="row">
+				<div class="col-12 discover-head loan-origination text-start">
+				<h3>Loan Organization</h3>
+				<h6>Loan Organization Sub Text</h6>
+
+			@Html.GetBlockListHtml(Model.CardFeaturesContent)
+			</div>
+
+		</div>
+	</div>
+</section>
+</body>
+</html>

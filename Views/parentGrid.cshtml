@@ -1,11 +1,13 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿
+
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @using Umbraco.Cms.Core.Models.Blocks;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @using Umbraco.Cms.Core.Services;
 @inject IContentService Services;
 @{
 
-    Layout = null;
+    Layout = "_Layout.cshtml";
 
     var blockGrid = Model.Value<BlockGridModel>("grid");
     var blocks = blockGrid?.ToList() ?? new List<BlockGridItem>();
@@ -13,7 +15,7 @@
     var subBlockGrid = Model.Value<Product>("newsBlog");
 
     var subBlocks = blockGrid?.ToList() ?? new List<BlockGridItem>();
-    
+
 }
 <style>
     .grid-container {
@@ -57,13 +59,21 @@
         @foreach (var block in blocks)
         {
             <div class="grid-item" style="grid-column: span @block.ColumnSpan; grid-row: span @block.RowSpan;">
-              <div>
+                <div>
 
                     @if (block.Content is Umbraco.Cms.Web.Common.PublishedModels.News newsContent)
                     {
                         <h3>@newsContent.Title</h3>
-                        <img class="bbcnews" src="~/media/zvehcr5l/news.jfif" alt="@newsContent.Title" style="width:100%; height:auto;object-fit:cover;image-orientation:from-image"/>
-                    
+                        <img class="bbcnews" src="~/media/zvehcr5l/news.jfif" alt="@newsContent.Title" style="width:100%; height:auto;object-fit:cover;image-orientation:from-image"/> 
+                         @*          
+                         @{ *@
+                        @* var content = Model.Content; *@
+                        @* if(content.CardImage != null){ *@
+                        @*     var mediaItem = Umbraco.Media(content.CardImage.Key); *@
+                        @*     if(mediaItem != null){ *@
+                        @*         var image = mediaItem.Url(); *@
+                        @*         <img src="@image" class="card-img-top pb-5" alt="@mediaItem.Name"/> *@
+                        @*     } *@
                         
                     }
 
@@ -104,7 +114,7 @@
             }
             @if(subBlock.Content is Umbraco.Cms.Web.Common.PublishedModels.SportsBlog sportBlog){
                 <div>
-                    <img src="~/media/i41hs014/fortune-of-time.jpg" alt="@sportBlog.PlayerImg" />
+                            <img src="~/media/i41hs014/fortune-of-time.jpg" alt="@sportBlog.PlayerImg" />
                 </div>
                     }
             </div>

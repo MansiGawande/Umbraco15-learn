@@ -1,0 +1,21 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem<CardFeaturesContent>>
+
+@{
+    <div class="card">
+        @{
+            var content = Model.Content;
+            if(content.CardImage != null){
+                var mediaItem = Umbraco.Media(content.CardImage.Key);
+                if(mediaItem != null){
+                    var image = mediaItem.Url();
+                    <img src="@image" class="card-img-top pb-5" alt="@mediaItem.Name"/>
+                }
+                <div class="card-body p-0">
+                <h5 class="card-title pb-3">@content.CardTitle</h5>
+                <p class="card-text">@content.CardDescription</p>
+                </div>
+            }
+        }
+        </div>
+    }

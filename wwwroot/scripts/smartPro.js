@@ -236,33 +236,7 @@ $(document).ready(function () {
 });
 
 
-
-$('.nav-tabs li a').click(function () {
-  // Hide all tab panes
-  $(".tab-pane").hide();
-
-  // Remove the 'active' class from all tabs
-  $('.nav-tabs li').removeClass('active');
-
-  // Show the selected tab pane
-  $("#" + $(this).data('tab')).show();
-
-  // Add the 'active' class to the clicked tab
-  $(this).parent().addClass('active');
-  $('.CustomerBlogSlider').slick("refresh");
-  $('.CustomerStoriesSlider').slick("refresh");
-});
-
-// Tab sticky on top
-$(window).scroll(function () {
-  var sticky = $('.tab-fixed');
-  var scroll = $(window).scrollTop();
-  if (scroll >= sticky.offset().top) {
-    sticky.addClass('fixed');
-  } else {
-    sticky.removeClass('fixed');
-  }
-});
+//extra remove
 
 $(document).ready(function () {
   function updatePlaceholderText(input) {
