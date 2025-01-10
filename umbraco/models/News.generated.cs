@@ -50,12 +50,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// NewsBlog
+		/// NewsImg
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.1.0+03eb878")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("newsBlog")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel NewsBlog => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "newsBlog");
+		[ImplementPropertyType("newsImg")]
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops NewsImg => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "newsImg");
 
 		///<summary>
 		/// Title
