@@ -63,7 +63,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.1.0+03eb878")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("productLearnMoreText")]
-		public virtual string ProductLearnMoreText => this.Value<string>(_publishedValueFallback, "productLearnMoreText");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ProductLearnMoreText => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "productLearnMoreText");
 
 		///<summary>
 		/// Product Learn More Url
@@ -103,7 +103,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.1.0+03eb878")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("productSubTitle")]
-		public virtual string ProductSubTitle => this.Value<string>(_publishedValueFallback, "productSubTitle");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ProductSubTitle => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "productSubTitle");
 
 		///<summary>
 		/// Product Title
@@ -111,6 +111,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.1.0+03eb878")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("productTitle")]
-		public virtual string ProductTitle => this.Value<string>(_publishedValueFallback, "productTitle");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ProductTitle => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "productTitle");
 	}
 }

@@ -71,6 +71,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.1.0+03eb878")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("cardTitle")]
-		public virtual string CardTitle => this.Value<string>(_publishedValueFallback, "cardTitle");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString CardTitle => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "cardTitle");
 	}
 }

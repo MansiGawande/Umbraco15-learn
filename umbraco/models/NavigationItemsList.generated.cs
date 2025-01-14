@@ -55,7 +55,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.1.0+03eb878")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("navigationItemChildList")]
-		public virtual string NavigationItemChildList => this.Value<string>(_publishedValueFallback, "navigationItemChildList");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString NavigationItemChildList => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "navigationItemChildList");
 
 		///<summary>
 		/// Navigation Item Url

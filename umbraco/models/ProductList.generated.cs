@@ -55,6 +55,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.1.0+03eb878")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("productName")]
-		public virtual string ProductName => this.Value<string>(_publishedValueFallback, "productName");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ProductName => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "productName");
 	}
 }

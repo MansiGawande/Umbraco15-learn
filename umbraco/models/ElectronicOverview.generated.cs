@@ -63,7 +63,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.1.0+03eb878")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("electronicSubTitle")]
-		public virtual string ElectronicSubTitle => this.Value<string>(_publishedValueFallback, "electronicSubTitle");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ElectronicSubTitle => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "electronicSubTitle");
 
 		///<summary>
 		/// Electronic Title
@@ -71,6 +71,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.1.0+03eb878")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("electronicTitle")]
-		public virtual string ElectronicTitle => this.Value<string>(_publishedValueFallback, "electronicTitle");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ElectronicTitle => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "electronicTitle");
 	}
 }

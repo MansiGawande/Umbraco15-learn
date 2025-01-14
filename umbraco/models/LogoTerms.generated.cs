@@ -55,7 +55,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.1.0+03eb878")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("copyWriteText")]
-		public virtual string CopyWriteText => this.Value<string>(_publishedValueFallback, "copyWriteText");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString CopyWriteText => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "copyWriteText");
 
 		///<summary>
 		/// Footer Logo Img

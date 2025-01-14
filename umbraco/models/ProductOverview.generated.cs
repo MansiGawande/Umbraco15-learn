@@ -55,7 +55,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.1.0+03eb878")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("futureProofTitle")]
-		public virtual string FutureProofTitle => this.Value<string>(_publishedValueFallback, "futureProofTitle");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString FutureProofTitle => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "futureProofTitle");
 
 		///<summary>
 		/// Product Content
@@ -87,7 +87,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.1.0+03eb878")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("productsSubTitle")]
-		public virtual string ProductsSubTitle => this.Value<string>(_publishedValueFallback, "productsSubTitle");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ProductsSubTitle => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "productsSubTitle");
 
 		///<summary>
 		/// Products Title
@@ -95,6 +95,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.1.0+03eb878")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("productsTitle")]
-		public virtual string ProductsTitle => this.Value<string>(_publishedValueFallback, "productsTitle");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ProductsTitle => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "productsTitle");
 	}
 }

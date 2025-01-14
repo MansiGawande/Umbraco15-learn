@@ -1,5 +1,183 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ElectronicOverview>
 @{
-	Layout = null;
+    Layout = "_Layout.cshtml";
 }
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@Model.ElectronicTitle</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/electronic.css">
+</head>
+<body>
+
+    <div class="py-3 py-md-5 bg-light">
+        @if (Model.ElectronicContent != null)
+        {
+            @foreach (var item in Model.ElectronicContent)
+            {
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-5 mt-3">
+                                    <div class="bg-white border">
+                                @if (item.HasValue("electronicItemImage"))
+                                {
+                                    var eleItemImg = item.Value<IEnumerable<IPublishedContent>>("electronicItemImage");
+                                    @if (eleItemImg != null && eleItemImg.Any())
+                                    {
+                                        var firstImage = eleItemImg.FirstOrDefault();
+                                        if (firstImage != null)
+                                        {
+                                            var mediaItem = Umbraco.Media(firstImage.Id);
+                                            @if (mediaItem != null)
+                                            {
+                                                var itemImg = mediaItem.Url();
+                                                @* <img id="selected-image" src="@itemImg" class="w-100" alt="mediaItem.Name"> *@
+                                                <img class="selected-image" id="selected-image-@item.Id" src="@itemImg" class="w-100" alt="mediaItem.Name" data-product-id="@item.Id">
+
+                                            }
+                                        }
+                                    }
+                                }
+                                    </div>
+                                </div>
+
+                                <div class="col-md-7 mt-3">
+                                    <div class="product-view">
+                                        <h4 class="product-name">
+                                    @item.Value("electronicItemName")
+                                            <label class="label-stock bg-success">In Stock</label>
+                                        </h4>
+                                        <hr>
+                                        <p class="product-path">
+                                            Home / Category / Product / HP Laptop
+                                        </p>
+                                        <div>
+                                            <span class="selling-price">$@item.Value("electronicItemPrice")</span>
+                                    @* <span class="original-price">$499</span> *@
+                                        </div>
+                                        <div class="mt-2">
+                                            <div class="input-group">
+                                                <span class="btn btn1"><i class="fa fa-minus"></i></span>
+                                                <input type="text" value="1" class="input-quantity" />
+                                                <span class="btn btn1"><i class="fa fa-plus"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="mt-2">
+                                            <a href="" class="btn btn1"> <i class="fa fa-shopping-cart"></i> Add To Cart</a>
+                                            <a href="" class="btn btn1"> <i class="fa fa-heart"></i> Add To Wishlist </a>
+                                        </div>
+                                        <div class="mt-3">
+                                            <h5 class="mb-0">Small Description</h5>
+                                            <p>
+                                        @item.Value("electronicItemDescription")
+                                            </p>
+                                        </div>
+
+                                             <div class="card" style="display: flex; justify-content: center; align-items: center;">
+                                            <div class="product-imgs" >
+                                        @if (item.HasValue("electronicItemImage"))
+                                        {
+                                            var eleItemImg = item.Value<IEnumerable<IPublishedContent>>("electronicItemImage");
+                                            @if (eleItemImg != null && eleItemImg.Any())
+                                            {
+                                                 <div class="img-select" > 
+                                                    @foreach (var img in eleItemImg.Take(5))
+                                                    {
+                                                        var mediaItem = Umbraco.Media(img.Id);
+                                                        if (mediaItem != null)
+                                                        {
+                                                            var imgUrl = mediaItem.Url();
+                                                              <div class="img-item" style="width:100%;">
+                                                                @* <a href="javascript:void(0);" data-id="@img.Id" data-url="@imgUrl"> *@
+                                                                <a href="javascript:void(0);" data-id="@img.Id" data-url="@imgUrl" data-product-id="@item.Id">
+
+                                                                    <img src="@imgUrl" alt="Image">
+                                                             </a>
+                                                         </div>
+                                                        }
+                                                    }
+                                                    </div> 
+                                            }
+                                        }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            }
+        }
+    </div>
+
+    @* Suggested Products *@
+    <div class="py-3 py-md-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="mb-4">@Model.ElectronicSubTitle</h4>
+                </div>
+                @if (Model.ElectronicContent != null)
+                {
+                    @foreach (var item in Model.ElectronicContent)
+                    {
+                                <div class="col-md-3">
+                                    <div class="product-card">
+                                        <div class="product-card-img">
+                                    @if (item.HasValue("electronicItemImage"))
+                                    {
+                                        var eleItemImg = item.Value<IEnumerable<IPublishedContent>>("electronicItemImage");
+                                        if (eleItemImg != null && eleItemImg.Any())
+                                        {
+                                            var firstImage = eleItemImg.FirstOrDefault();
+                                            if (firstImage != null)
+                                            {
+
+                                                var mediaItem = Umbraco.Media(firstImage.Id);
+                                                @if (mediaItem != null)
+                                                {
+                                                    var imgUrl = mediaItem.Url();
+                                                   <label class="stock bg-success">In Stock</label>
+                                                    <img src="@imgUrl" alt="mediaItem.Name" style="width:100%; border:2px solid revert;">
+                                                }
+                                            }
+                                        }
+                                    }
+                                        </div>
+
+                                        <div class="product-card-body">
+                                            <p class="product-brand">@item.Value("electronicBrand")</p>
+                                            <h5 class="product-name">
+                                                <a href="">
+                                            @item.Value("electronicItemName")
+                                                </a>
+                                            </h5>
+                                            <div>
+                                        @* <span class="selling-price">$500</span> *@
+                                                <span class="original-price">$@item.Value("electronicItemPrice")</span>
+                                            </div>
+                                            <div class="mt-2">
+                                                <a href="" class="btn btn1">Add To Cart</a>
+                                                <a href="" class="btn btn1"> <i class="fa fa-heart"></i> </a>
+                                                <a href="" class="btn btn1"> View </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<script src="~/scripts/swap.js"></script>
+
+</html>

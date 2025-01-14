@@ -55,6 +55,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.1.0+03eb878")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("productHeader")]
-		public virtual string ProductHeader => this.Value<string>(_publishedValueFallback, "productHeader");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ProductHeader => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "productHeader");
 	}
 }

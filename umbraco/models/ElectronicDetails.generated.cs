@@ -55,7 +55,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.1.0+03eb878")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("electronicBrand")]
-		public virtual string ElectronicBrand => this.Value<string>(_publishedValueFallback, "electronicBrand");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ElectronicBrand => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "electronicBrand");
 
 		///<summary>
 		/// Electronic Item Description
@@ -71,7 +71,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.1.0+03eb878")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("electronicItemImage")]
-		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops ElectronicItemImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "electronicItemImage");
+		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.MediaWithCrops> ElectronicItemImage => this.Value<global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.MediaWithCrops>>(_publishedValueFallback, "electronicItemImage");
 
 		///<summary>
 		/// Electronic Item Name
@@ -79,7 +79,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.1.0+03eb878")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("electronicItemName")]
-		public virtual string ElectronicItemName => this.Value<string>(_publishedValueFallback, "electronicItemName");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ElectronicItemName => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "electronicItemName");
 
 		///<summary>
 		/// Electronic Item Price

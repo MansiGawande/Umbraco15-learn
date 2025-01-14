@@ -63,7 +63,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.1.0+03eb878")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("productInformationLearnMoreText")]
-		public virtual string ProductInformationLearnMoreText => this.Value<string>(_publishedValueFallback, "productInformationLearnMoreText");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ProductInformationLearnMoreText => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "productInformationLearnMoreText");
 
 		///<summary>
 		/// Product Information Learn More Url
@@ -95,7 +95,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.1.0+03eb878")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("productInformationSubTitle")]
-		public virtual string ProductInformationSubTitle => this.Value<string>(_publishedValueFallback, "productInformationSubTitle");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ProductInformationSubTitle => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "productInformationSubTitle");
 
 		///<summary>
 		/// Product Information Title
@@ -103,6 +103,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "15.1.0+03eb878")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("productInformationTitle")]
-		public virtual string ProductInformationTitle => this.Value<string>(_publishedValueFallback, "productInformationTitle");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ProductInformationTitle => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "productInformationTitle");
 	}
 }
