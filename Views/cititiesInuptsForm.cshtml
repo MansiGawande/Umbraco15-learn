@@ -1,0 +1,63 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+	Layout = "_Layout.cshtml";
+}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+
+		input {
+			appearance: none;
+			width: 50%;
+			font-size: 1.15rem;
+			padding: 0.675em 6em 0.675em 1em;
+			background-color: #fff;
+			border: 1px solid #caced1;
+			border-radius: 0.25rem;
+			color: #000;
+			cursor: pointer;
+		}
+
+		.form-container {
+			max-width: 100px;
+			margin: 0 auto;
+			padding: 30px;
+			background-color: #f9f9f9;
+			border-radius: 8px;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+		}
+
+		input[type=submit] {
+			width: 50%;
+			background-color: #4CAF50;
+			color: white;
+			padding: 0.675em 6em 0.675em 1em;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+			input[type=submit]:hover {
+				background-color: #45a049;
+			}
+	</style>
+</head>
+<body>
+	@* city store in Umbraco From *@
+	@{
+		var formId = Model.Value<Guid>("formPicker");
+		if(formId == Guid.Empty){
+			<p>Form is Unable to render </p>
+		}
+		<div class="container  p-4 rounded bg-light">
+			@await Component.InvokeAsync("RenderForm", new { formId = formId, theme = "customForm", includeScripts = true })
+		</div>
+	}
+
+<script src="~/scripts/citiesinput.js"></script>
+</body>
+
+</html>

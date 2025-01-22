@@ -60,12 +60,11 @@ ul {
   padding: 0;
   box-sizing: border-box;
   font-family: 'DM Sans', sans-serif;
-  color: #12130F;
 }
 
 p {
-  color: #12130F;
-  font-size: 1.4rem;
+/*  color: #12130F;
+  font-size: 1.4rem;*/
 }
 
 ul,
@@ -1502,8 +1501,8 @@ p.about-smart-para {
 .join-teams-setup-box span {
   display: block;
   font-size: 3rem;
-  color: #fff;
-  font-weight: 600;
+  color: #fff !important;
+  font-weight: 600 !important;
   display: flex;
   justify-content: center;
   align-items: center;

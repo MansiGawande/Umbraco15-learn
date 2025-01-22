@@ -1,0 +1,148 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<PartnersOverview>
+@{
+    Layout = "_Layout.cshtml";
+}
+@* partneres overview *@
+<html>
+<head>
+    <meta name="mobile-web-app-capable" content="yes">
+    <link href="~/css/smartPro.css" rel="stylesheet" />
+</head>
+<body>
+<!-- smart story -->
+<section class="smart-way header-bg patners-header">
+    <div class="container">
+        <div class="smart-story max-w-900 text-center">
+            <div>
+                <h1>@Model.HowItWorksTitle</h1>
+                @* <p class="pt-4 m-auto">@Model.HowItWorksSubTitle</p> *@
+
+            </div>
+            <div class="patners-how-it-work">
+                <h3></h3>
+                <p class="m-auto">@Model.HowItWorksSubTitle</p>
+
+            </div>
+        </div>
+        <div class="partner-join-step-section">
+            <div class="partner-join-step">
+                <div class="partners-team-box row">
+                    <div class="join-teams-setup-box col-sm-4">
+                        <span class="mr-auto"><strong>@Model.HowItWorksNo1</strong></span>
+                        <h4 class="">@Model.HowItWorksTitle1</h4>
+                    </div>
+                    <div class="join-teams-setup-box col-sm-4">
+                        <span class="m-auto" style="color: #fff"><strong>@Model.HowItWorksNo2</strong></span>
+                        <h4 class="">@Model.HowItWorksTitle2</h4>
+                    </div>
+                    <div class="join-teams-setup-box col-sm-4">
+                        <span class="ml-auto"><strong>@Model.HowItWorksNo3</strong></span>
+                        <h4 class="">@Model.HowItWorksTitle3</h4>
+                    </div>
+                </div>
+            </div>
+            @{
+                var joinOurTeambtmUrl = Model.PartnerJoinTeamButtonUrl?.FirstOrDefault();
+                if (joinOurTeambtmUrl != null)
+                {
+                    <a href="@joinOurTeambtmUrl" target="@joinOurTeambtmUrl.Target" class="btn common-btn bottom-common-btnbg" title="Join Our Team">@Model.PartnerJoinTeamButtonTitle</a>
+                }
+            }
+        </div>
+    </div>
+    </div>
+</section>
+<!-- Partnership Network -->
+<section>
+    <div class="container">
+        <div class="partnership-network partners-logos">
+            @if(Model.AboutPartnershipTern != null && Model.AboutPartnershipTern.Any()){
+                <h2>@Model.PartnershipNetworkTitle</h2>
+                <div class="partnership-tab-section">
+                    <ul class="partnership-tab-nav">
+                        <li><button onclick="openTab('Allshow','button1')" id="button1" class="active showAll">All</button></li>
+                        @foreach(var item in Model.AboutPartnershipTern){ // AboutPartnershipTern content picker child item
+
+                            var tblId = item.Name.Replace(" ", string.Empty); //string.Replace(string oldValue, string newValue)
+
+                            var id = item.Name.Replace(" ",string.Empty); 
+
+                            var newId = id.Count(); 
+                            <li><button onclick="openTab('@tblId','@newId')" id="@newId" >@item.Name</button></li>  // onclick="openTab('CardPartners', '12')"
+                        }
+                    </ul>
+                    <div class="tabs-content pt-0">
+                        @foreach (var item in Model.AboutPartnershipTern) {
+
+                            var id = item.Name.Replace(" ",string.Empty); // class tab
+                            <div class="tab-content-box">
+                                <div id="@id" class="tab" >
+                                    <div class="logo-section">
+                                        @if (item.Value<IEnumerable<IPublishedContent>>("partnersLogo") != null){ 
+                                            @foreach (var image in item.Value<IEnumerable<IPublishedContent>>("partnersLogo")){ 
+
+                                                var mediaItem = Umbraco.Media(image.Key); 
+                                                @if(mediaItem != null){  
+
+                                                    var img1 = mediaItem.Url();  
+                                                    var img = ((Umbraco.Cms.Web.Common.PublishedModels.Image)mediaItem).UmbracoFile.Src; 
+                                                    <span class="logo-box"> 
+                                                        <img src="@img" alt="mediaIem.Name"/> 
+                                                    </span> 
+                                                }  
+                                            } 
+
+
+                                        }
+
+                                        @*     @if (item.HasValue("partnersLogo")){ *@
+                                        @*     var images = item.Value<IEnumerable<IPublishedContent>>("partnersLogo"); *@
+                                        @*     @if (images != null && images.Any()) *@
+                                        @*     { *@
+                                        @*         @foreach (var image in images.Take(5)) *@
+                                        @*         { *@
+                                        @*             var mediaItem = Umbraco.Media(image.Id); *@
+                                        @*             if(mediaItem != null){ *@
+                                        @*                 var imgUrl = mediaItem.Url(); *@
+                                        @*                  <span class="logo-box"> *@
+                                        @*                     <img src="@imgUrl" alt="mediaIem.Name" /> *@
+                                        @*                 </span>  *@
+                                        @*             } *@
+                                        @*         } *@
+                                        @*     } *@
+                                        @* } *@
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                        <div class="tab-content-box">
+                            <div id="Allshow" class="tab">
+                                <div class="logo-section">
+                                    @foreach (var item in Model.AboutPartnershipTern)
+                                    {
+                                        @if (item.Value<IEnumerable<IPublishedContent>>("partnersLogo") != null)
+                                        {
+                                            var mediaItem = Umbraco.Media(item.Key);
+                                            @if (mediaItem != null)
+                                            {
+                                                var imgUrl = mediaItem.Url();
+                                                <span class="logo-box">
+                                                    <img src="@imgUrl" />
+                                                </span>
+                                            }
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+  <script src="~/scripts/smartPro.js"></script>  
+  </body>
+  </html>

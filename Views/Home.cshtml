@@ -1,5 +1,5 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Home>
 
 @{
     Layout = "_Layout.cshtml";  
@@ -9,11 +9,26 @@
 <head>
     <title>Index</title>
     <meta name="mobile-web-app-capable" content="yes">
-    <link rel="stylesheet" href="~/css/styles.css" />
+    @* <link rel="stylesheet" href="~/css/styles.css" />  *@
+    <style>
+        ul li:{
+           color:dimgrey;
+        }
+        </style>
 </head>
 <body>
     
-    <h1>Hi</h1>
+<span>Hi</span>
+    <div class="container">
+            <div class="row">
+           
+                <div class="col-sm-6 pt-sm-4">
+                        <ul>@Html.Raw(Model.Bullets)</ul>
+                    
+                </div>
+            </div>
+        </div>
     
+
 </body>
 </html>

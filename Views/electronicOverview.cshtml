@@ -96,7 +96,7 @@
                                                             var imgUrl = mediaItem.Url();
                                                               <div class="img-item" style="width:100%;">
                                                                 @* <a href="javascript:void(0);" data-id="@img.Id" data-url="@imgUrl"> *@
-                                                                <a href="javascript:void(0);" data-id="@img.Id" data-url="@imgUrl" data-product-id="@item.Id">
+                                                                <a href="" data-id="@img.Id" data-url="@imgUrl" data-product-id="@item.Id">
 
                                                                     <img src="@imgUrl" alt="Image">
                                                              </a>
@@ -159,8 +159,8 @@
                                                 </a>
                                             </h5>
                                             <div>
-                                        @* <span class="selling-price">$500</span> *@
-                                                <span class="original-price">$@item.Value("electronicItemPrice")</span>
+                                        <span class="selling-price">$@item.Value("electronicItemPrice")</span>
+                                        <span class="original-price">$50000</span>
                                             </div>
                                             <div class="mt-2">
                                                 <a href="" class="btn btn1">Add To Cart</a>

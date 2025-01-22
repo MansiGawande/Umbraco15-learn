@@ -8,7 +8,7 @@ $(document).ready(function () {
     var calc = ((nextSlide) / (slick.slideCount - 1)) * 100;
 
     $progressBar
-      .css('background-size', calc + '% 100%')
+      .css('f -size', calc + '% 100%')
       .attr('aria-valuenow', calc);
 
     $progressBarLabel.text(calc + '% completed');
@@ -238,37 +238,37 @@ $(document).ready(function () {
 
 //extra remove
 
-$(document).ready(function () {
-  function updatePlaceholderText(input) {
-    var label = input.closest('.umbraco-forms-field').find('.umbraco-forms-field-wrapper');
-    var files = input[0].files;
+//$(document).ready(function () {
+//  function updatePlaceholderText(input) {
+//    var label = input.closest('.umbraco-forms-field').find('.umbraco-forms-field-wrapper');
+//    var files = input[0].files;
 
-    if (files && files.length > 0) {
+//    if (files && files.length > 0) {
 
-      var fileName = files.length > 1 ? files.length + ' files selected' : files[0].name;
-      label.attr('data-text', fileName);
-    } else {
+//      var fileName = files.length > 1 ? files.length + ' files selected' : files[0].name;
+//      label.attr('data-text', fileName);
+//    } else {
 
-      label.attr('data-text', 'Attach or enter manually');
-    }
-  }
+//      label.attr('data-text', 'Attach or enter manually');
+//    }
+//  }
 
 
-  function setDefaultPlaceholderText() {
-    $(".resume .umbraco-forms-field-wrapper").each(function () {
-      $(this).attr('data-text', 'Attach or enter manually');
-    });
-  }
-  setDefaultPlaceholderText();
+//  function setDefaultPlaceholderText() {
+//    $(".resume .umbraco-forms-field-wrapper").each(function () {
+//      $(this).attr('data-text', 'Attach or enter manually');
+//    });
+//  }
+//  setDefaultPlaceholderText();
 
-  // Trigger the change event initially to set the placeholder text
-  $(".resume .umbraco-forms-field-wrapper input").trigger('change');
+//  // Trigger the change event initially to set the placeholder text
+//  $(".resume .umbraco-forms-field-wrapper input").trigger('change');
 
-  // Event listener for file input change
-  $(".resume").on("change", ".umbraco-forms-field-wrapper input", function () {
-    updatePlaceholderText($(this));
-  });
-});
+//  // Event listener for file input change
+//  $(".resume").on("change", ".umbraco-forms-field-wrapper input", function () {
+//    updatePlaceholderText($(this));
+//  });
+//});
 
 
 
@@ -351,10 +351,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
-function openTab(tabId, button) {
+//partnership Network  Onclick
+function openTab(tabId, button) { // ("CardPartners", "12")
   // Hide all tabs
-  $('.tab').hide();
+  $('.tab').hide(); //privious tab remove
 
   // Remove active class from all buttons
   $('.partnership-tab-nav button').removeClass('active');
@@ -374,133 +374,133 @@ function openTab(tabId, button) {
 
 /// Email Functionality of Contact Form
 
-function ContactFormSunmission() {
-  var contactformformData = {
-    FirstName: "",
-    LastName: "",
-    WorkEmail: "",
-    WorkPhone: "",
-    CompanyWebsite: "",
-    Country: "",
-    Products: "",
-    Recipient: "",
-    Subject: "",
-    Body: ""
-  };
+//function ContactFormSunmission() {
+//  var contactformformData = {
+//    FirstName: "",
+//    LastName: "",
+//    WorkEmail: "",
+//    WorkPhone: "",
+//    CompanyWebsite: "",
+//    Country: "",
+//    Products: "",
+//    Recipient: "",
+//    Subject: "",
+//    Body: ""
+//  };
 
-  let isValid = true;
+//  let isValid = true;
 
-  // Check each input field
-  $('.firstname input, .lastname input, .workemail input, .workphone input, .companywebsite input, .country select').each(function () {
-    // If any input field is empty, set isValid to false
-    if ($(this).val() === null || $(this).val() === undefined || $(this).val() === "") {
-      isValid = false;
-      return false; // Break out of the loop since we already found an empty field
-    }
-  });
-  //// Check if at least one checkbox is checked for products
-  //if ($('.products input:checked').length === 0) {
-  //  isValid = false;
-  //}
+//  // Check each input field
+//  $('.firstname input, .lastname input, .workemail input, .workphone input, .companywebsite input, .country select').each(function () {
+//    // If any input field is empty, set isValid to false
+//    if ($(this).val() === null || $(this).val() === undefined || $(this).val() === "") {
+//      isValid = false;
+//      return false; // Break out of the loop since we already found an empty field
+//    }
+//  });
+//  //// Check if at least one checkbox is checked for products
+//  //if ($('.products input:checked').length === 0) {
+//  //  isValid = false;
+//  //}
 
-  if (isValid) {
-    var contactformformData = new FormData();
+//  if (isValid) {
+//    var contactformformData = new FormData();
 
-    contactformformData.append('FirstName', $('.firstname input').val());
-    contactformformData.append('LastName', $('.lastname input').val());
-    contactformformData.append('WorkEmail', $('.workemail input').val());
-    contactformformData.append('WorkPhone', $('.workphone input').val());
-    contactformformData.append('CompanyWebsite', $('.companywebsite input').val());
-    contactformformData.append('Country', $('.country select').val());
-    contactformformData.append('Products', getSelectedCheckboxValues('.products input'));
+//    contactformformData.append('FirstName', $('.firstname input').val());
+//    contactformformData.append('LastName', $('.lastname input').val());
+//    contactformformData.append('WorkEmail', $('.workemail input').val());
+//    contactformformData.append('WorkPhone', $('.workphone input').val());
+//    contactformformData.append('CompanyWebsite', $('.companywebsite input').val());
+//    contactformformData.append('Country', $('.country select').val());
+//    contactformformData.append('Products', getSelectedCheckboxValues('.products input'));
 
-    // Perform an AJAX POST request to your controller action
-    $.ajax({
-      type: 'POST',
-      url: "/SubmitContactForm/HandleFormSubmission",
-      //contentType: 'application/json',
-      data: contactformformData,
-      processData: false,
-      contentType: false,
-      success: function (data) {
-        // Handle the success response if needed
-        console.log(data);
-      },
-      error: function (error) {
-        // Handle the error if needed
-        console.error(error);
-      }
-    });
-  }
-}
+//    // Perform an AJAX POST request to your controller action
+//    $.ajax({
+//      type: 'POST',
+//      url: "/SubmitContactForm/HandleFormSubmission",
+//      //contentType: 'application/json',
+//      data: contactformformData,
+//      processData: false,
+//      contentType: false,
+//      success: function (data) {
+//        // Handle the success response if needed
+//        console.log(data);
+//      },
+//      error: function (error) {
+//        // Handle the error if needed
+//        console.error(error);
+//      }
+//    });
+//  }
+//}
 
 // Function to get selected checkbox values as a comma-separated string
-function getSelectedCheckboxValues(selector) {
-  var selectedValues = [];
-  $(selector + ':checked').each(function () {
-    selectedValues.push($(this).val());
-  });
-  return selectedValues.join(',');
-}
-$('#contactform input[type=submit]').click(function () {
-  ContactFormSunmission();
-});
+//function getSelectedCheckboxValues(selector) {
+//  var selectedValues = [];
+//  $(selector + ':checked').each(function () {
+//    selectedValues.push($(this).val());
+//  });
+//  return selectedValues.join(',');
+//}
+//$('#contactform input[type=submit]').click(function () {
+//  ContactFormSunmission();
+//});
 
 
 // Email Funtionality of Career form //
 
-function CareerFormSunmission() {
-  var formData = {
-    FirstName: "",
-    LastName: "",
-    Email: "",
-    DepartmentOfInterest: "",
-    Resume: "",
-    Recipient: "",
-    Subject: "",
-    Body: ""
-  };
+//function CareerFormSunmission() {
+//  var formData = {
+//    FirstName: "",
+//    LastName: "",
+//    Email: "",
+//    DepartmentOfInterest: "",
+//    Resume: "",
+//    Recipient: "",
+//    Subject: "",
+//    Body: ""
+//  };
 
-  var isValid = true;
-  $('.firstname input, .lastname input, .email input, .departmentofinterest select, .resume input').each(function () {
-    // If any input field is empty, set isValid to false
-    if ($(this).val() === null || $(this).val() === undefined || $(this).val() === "") {
-      isValid = false;
-      return false;
-    }
-  });
+//  var isValid = true;
+//  $('.firstname input, .lastname input, .email input, .departmentofinterest select, .resume input').each(function () {
+//    // If any input field is empty, set isValid to false
+//    if ($(this).val() === null || $(this).val() === undefined || $(this).val() === "") {
+//      isValid = false;
+//      return false;
+//    }
+//  });
 
-  if (isValid) {
-    var formData = new FormData();
+//  if (isValid) {
+//    var formData = new FormData();
 
-    formData.append('FirstName', $('.firstname input').val());
-    formData.append('LastName', $('.lastname input').val());
-    formData.append('Email', $('.email input').val());
-    formData.append('DepartmentOfInterest', $('.departmentofinterest select').val());
+//    formData.append('FirstName', $('.firstname input').val());
+//    formData.append('LastName', $('.lastname input').val());
+//    formData.append('Email', $('.email input').val());
+//    formData.append('DepartmentOfInterest', $('.departmentofinterest select').val());
 
-    // Get the file input element
-    var resumeInput = $('.resume input')[0];
-    // Check if a file is selected
-    if (resumeInput.files.length > 0) {
-      formData.append('Resume', resumeInput.files[0]);
-    }
+//    // Get the file input element
+//    var resumeInput = $('.resume input')[0];
+//    // Check if a file is selected
+//    if (resumeInput.files.length > 0) {
+//      formData.append('Resume', resumeInput.files[0]);
+//    }
 
-    $.ajax({
-      type: 'POST',
-      url: "/CareerForm/CareerFormSubmission",
-      data: formData,
-      processData: false,
-      contentType: false,
-      success: function (data) {
-        console.log(data);
-      },
-      error: function (error) {
+//    $.ajax({
+//      type: 'POST',
+//      url: "/CareerForm/CareerFormSubmission",
+//      data: formData,
+//      processData: false,
+//      contentType: false,
+//      success: function (data) {
+//        console.log(data);
+//      },
+//      error: function (error) {
 
-        console.error(error);
-      }
-    });
-  }
-}
+//        console.error(error);
+//      }
+//    });
+//  }
+//}
 
 $('#careerform input[type=submit]').click(function () {
   CareerFormSunmission();
@@ -526,7 +526,7 @@ function sanitisePercentage(i) {
   return Math.min(100, Math.max(0, i));
 }
 
-// Slider
+// Slider article
 var percentTime;
 var tick;
 var progressBar = document.querySelector('.swiper-hero-progress');
@@ -600,41 +600,41 @@ function updateSwiperProgressBar(bar, slideDelay) {
 
 }
 
-$(document).ready(function () {
-  function setCookie(cname, cvalue) {
-    document.cookie = cname + "=" + cvalue + ";path=/";
-  }
+//$(document).ready(function () {
+//  function setCookie(cname, cvalue) {
+//    document.cookie = cname + "=" + cvalue + ";path=/";
+//  }
 
-  function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
+//  function getCookie(cname) {
+//    var name = cname + "=";
+//    var decodedCookie = decodeURIComponent(document.cookie);
+//    var ca = decodedCookie.split(';');
+//    for (var i = 0; i < ca.length; i++) {
+//      var c = ca[i];
+//      while (c.charAt(0) == ' ') {
+//        c = c.substring(1);
+//      }
+//      if (c.indexOf(name) == 0) {
+//        return c.substring(name.length, c.length);
+//      }
+//    }
+//    return "";
+//  }
 
-  function checkCookie() {
-    if (getCookie("cookiepolicyread") != "") {
-      $(".terms").hide();
-    }
-    else {
-      $(".terms").css("display", "block");
-    }
-  }
+//  function checkCookie() {
+//    if (getCookie("cookiepolicyread") != "") {
+//      $(".terms").hide();
+//    }
+//    else {
+//      $(".terms").css("display", "block");
+//    }
+//  }
 
-  checkCookie();
+//  checkCookie();
 
-  $(".cookie-close").on('click', function (event) {
-    event.preventDefault();
-    setCookie('cookiepolicyread', 'true');
-    $(".terms").hide();
-  });
-});
+//  $(".cookie-close").on('click', function (event) {
+//    event.preventDefault();
+//    setCookie('cookiepolicyread', 'true');
+//    $(".terms").hide();
+//  });
+//});

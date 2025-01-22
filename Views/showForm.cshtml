@@ -1,28 +1,65 @@
-﻿
+﻿@using Umbraco.Forms.Core.Services;
+@using Umbraco.Forms.Core.Extensions
 @using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@inject IRecordReaderService _recordReaderService;
 @{
-    Layout = "_Layout.cshtml"; 
+    Layout = "_Layout.cshtml";
 }
-<html>
 <head>
     <meta name="mobile-web-app-capable" content="yes">
-     <link href="~/css/customForm.css" rel="stylesheet" />
+    <link href="~/css/customForm.css" rel="stylesheet" />
 </head>
-<body>
+
 @{
-    var formId = Model.Value<Guid>("formPicker"); 
-    // <p>Form ID value: @formId</p>  
-
-    if (formId == Guid.Empty) {
-        <p>No form selected</p>
-    } else {
-        <div class="form-container">
-            @await Component.InvokeAsync("RenderForm", new { formId = formId , theme = "customForm", includeScripts = true })
-        </div>
-    }
+    var formId = Model.Value<Guid>("formPicker");
+    var cities = _recordReaderService.GetApprovedRecordsFromForm(Guid.Parse("b183a56b-11b2-4d40-9781-249ea7d1c0bb"), 1, 100)
+        .Items
+        .Select(record => record.ValueAsString("city"))
+        .ToList();
+    //cities in object format convert it into string
+        var citiesJson = Json.Serialize(cities);
 }
-</body>
-</html>
-   
 
+
+
+@if (formId == Guid.Empty)
+{
+    <p>No form selected</p>
+}
+else
+{
+    <div class="container">
+        <label for="city">Choose a city:</label>
+
+        <select>
+            @foreach (var record in _recordReaderService.GetApprovedRecordsFromForm(Guid.Parse("b183a56b-11b2-4d40-9781-249ea7d1c0bb"), 1, 100).Items)
+            {
+                <option value="city">@record.ValueAsString("city")</option>
+            }
+        </select>
+    </div>
+
+
+}
+<div class="form-container">
+    @await Component.InvokeAsync("RenderForm", new { formId = formId, theme = "customForm", includeScripts = true })
+</div>
+
+
+
+<script>
+    // retrieve the serialized (object to string) cities list
+    var cities = @Html.Raw(citiesJson);
+
+    // get the select dropdown element
+    var selectElement = document.getElementById('69443629-9c37-4812-a586-a4ff3fefbaae');
+
+    // populate the dropdown options dynamically
+    cities.forEach(function(city) {
+        var option = document.createElement('option');
+        option.value = city;
+        option.textContent = city;
+        selectElement.appendChild(option);
+    });
+</script>
